@@ -14,7 +14,7 @@ class IsAdminOrTeacherOrReadOnly(permissions.BasePermission):
             return True
         if request.user.is_authenticated and request.user.is_staff:
             return True
-        return obj.user == request.user
+        return obj.teacher == request.user
     
 
 
