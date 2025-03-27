@@ -122,9 +122,10 @@ class TuitionViewSet(ModelViewSet):
     )
     @action(methods=['get'],detail=True)
     def see_progress(self,request,pk=None):
-        user = self.request.use
+        user = self.request.user
+        tuition = Tuition.objects.get(id= pk)
 
-        progress, created = Progress.objects.get_or_create(user= user)
+        progress, created = Progress.objects.get_or_create(user= user, tuition=tuition)
         if not created:
             return Response({'message': 'Applicant is already taken'}, status= status.HTTP_208_ALREADY_REPORTED)
         
