@@ -44,6 +44,7 @@ class Applicant(models.Model):
 class StudentsOfTeacher(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'student')
     tuition = models.ForeignKey(Tuition, on_delete=models.CASCADE, related_name= 'student')
+    teacher = models.ForeignKey(User, on_delete= models.CASCADE, related_name= 'studentOfTeacher')
 
     def __str__(self):
         return self.user.first_name

@@ -215,7 +215,7 @@ class ApplicantViewSet(ModelViewSet):
         applicant = Applicant.objects.get(id= self.kwargs.get('pk'))
         tuition = Tuition.objects.get(id= self.kwargs.get('tuition_pk'))
 
-        student, created = StudentsOfTeacher.objects.get_or_create(user=applicant.user, tuition=tuition)
+        student, created = StudentsOfTeacher.objects.get_or_create(user=applicant.user, tuition=tuition, teacher=self.request.user)
         if not created:
             return Response({'message': 'Applicant is already taken'}, status=status.HTTP_208_ALREADY_REPORTED)
 
@@ -237,9 +237,8 @@ class StudentOfTeacherViewSet(ModelViewSet):
     permission_classes = [OnlyForTeacher]
 
     def get_queryset(self):
-        teacher_id = self.kwargs.get('teacher_pk')
-        teacher = User.objects.get(id= teacher_id)
-        return StudentsOfTeacher.objects.filter(tuition_id = teacher.tuition.first().id)
+        teacher = User.objects.get(id= self.kwargs.get('teacher_pk'))
+        return StudentsOfTeacher.objects.filter(teacher= teacher)
 
     @swagger_auto_schema(
         operation_summary= 'Retrive the list of student under a Teacher'
