@@ -138,6 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173/',
+    'http://localhost:5173/'
 ]
 
 REST_FRAMEWORK = {
@@ -148,6 +149,8 @@ REST_FRAMEWORK = {
 }
 
 DJOSER = {
+    'EMAIL_FRONTEND_PROTOCOL' : config('EMAIL_FRONTEND_PROTOCOL'),
+    'EMAIL_FRONTEND_DOMAIN' : config('EMAIL_FRONTEND_DOMAIN'),
     'USERNAME_FIELD': 'email',
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
