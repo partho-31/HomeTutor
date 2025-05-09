@@ -9,7 +9,7 @@ from teachers.serializers import ForProfileTuitionSerializer
 class CustomUserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         fields = ['first_name','last_name','password','email','address','phone_number','role']
-
+        
 
 
 class CustomUserSerializer(UserSerializer):

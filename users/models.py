@@ -15,7 +15,7 @@ class User(AbstractUser):
     email = models.EmailField( unique= True)
     address = models.CharField(max_length= 200, blank= True, null= True)
     phone_number = models.CharField(max_length= 15, blank= True, null= True)
-    role = models.CharField(max_length=8, choices= STATUS_CHOICES, default= 'Student')
+    role = models.CharField(max_length=8, choices= STATUS_CHOICES, default='Student')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -24,4 +24,11 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.get_full_name()
-    
+
+
+class UserProfile(models.Model):
+    institute= models.CharField(max_length=100, blank=True, null=True)
+    profession= models.CharField(max_length=50, blank=True, null=True)
+    qualification= models.CharField(max_length=200, blank=True, null=True)
+    bio= models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
