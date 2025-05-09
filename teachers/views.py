@@ -18,7 +18,7 @@ class TeacherViewSet(ModelViewSet):
     - Allows users to view teachers list and details
 
     """
-    queryset = User.objects.filter(role= 'Teacher').select_related('profile').all()
+    queryset = User.objects.filter(role= 'Teacher').all()
     serializer_class = TeacherSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = CustomPagination

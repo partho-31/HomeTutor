@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser
-from users.models import User,UserProfile
+from users.models import User
 from users.serializers import CustomUserSerializer,CustomUserCreateSerializer
 from rest_framework.decorators import api_view
 from drf_yasg.utils import swagger_auto_schema
@@ -18,7 +18,7 @@ class StudentViewSet(ModelViewSet):
     - Only addmin is allowed to access this API
 
     """
-    queryset = User.objects.filter(role = 'Student').select_related('profile').all()
+    queryset = User.objects.filter(role = 'Student').all()
     serializer_class = CustomUserSerializer
     permission_classes = [IsAdminUser]
 
@@ -74,10 +74,7 @@ class StudentViewSet(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
     
-    def perform_create(self, serializer):
-        user = serializer.save()
-        UserProfile.objects.create(user=user)
-
+   
 
 
 

@@ -26,9 +26,3 @@ class User(AbstractUser):
         return self.get_full_name()
 
 
-class UserProfile(models.Model):
-    institute= models.CharField(max_length=100, blank=True, null=True)
-    profession= models.CharField(max_length=50, blank=True, null=True)
-    qualification= models.CharField(max_length=200, blank=True, null=True)
-    bio= models.TextField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")

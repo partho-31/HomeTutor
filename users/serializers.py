@@ -8,9 +8,9 @@ from teachers.serializers import ForProfileTuitionSerializer
 
 class CustomUserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
-        fields = ['first_name','last_name','password','email','address','phone_number','role','institute','profession','bio','qualification']
+        fields = ['first_name','last_name','password','email','address','phone_number','role']
         
-
+    
 
 class CustomUserSerializer(UserSerializer):
     applied_tuition = serializers.SerializerMethodField(method_name= 'check_applied_tuition')
