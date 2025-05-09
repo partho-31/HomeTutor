@@ -114,7 +114,7 @@ def PaymentInitiate(request):
     response = sslcz.createSession(post_body) 
     
     if response.get('status') == 'SUCCESS':
-        return Response({'payment-url' : response.get('GatewayPageURL')})
+        return Response({'payment_url' : response.get('GatewayPageURL')})
     else:  
         return Response({'request' : 'Request failed!','response': response})
  
