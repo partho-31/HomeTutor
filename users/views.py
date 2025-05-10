@@ -18,7 +18,7 @@ class StudentViewSet(ModelViewSet):
     - Only addmin is allowed to access this API
 
     """
-    queryset = User.objects.filter(role = 'Student')
+    queryset = User.objects.filter(role = 'Student').all()
     serializer_class = CustomUserSerializer
     permission_classes = [IsAdminUser]
 
@@ -73,8 +73,6 @@ class StudentViewSet(ModelViewSet):
             )
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
-
-
 
 
 @api_view(['POST',]) 

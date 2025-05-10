@@ -22,7 +22,6 @@ class User(AbstractUser):
     qualifications = models.TextField(blank=True, null=True)
     experience = models.CharField(max_length=200,default="Student" ,blank=True, null=True)
 
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -30,4 +29,5 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.get_full_name()
-    
+
+

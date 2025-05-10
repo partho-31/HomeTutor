@@ -10,6 +10,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None,{'fields':('email','password')}),
         ('Personal Info',{'fields':('first_name','last_name','address','phone_number','role')}),
+        ('Additional Info',{'fields':('institute','profession','qualifications','experience','bio')}),
         ('Permissions',{'fields':('is_active','is_staff','is_superuser','groups','user_permissions')}),
         ('Important Dates',{'fields':('last_login','date_joined')})
     )
@@ -26,5 +27,3 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 admin.site.register(User, CustomUserAdmin)
-
-
