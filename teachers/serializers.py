@@ -28,7 +28,7 @@ class ForProfileTuitionSerializer(serializers.Serializer):
 class CreateTuitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tuition
-        fields = ['title','sub_title','course_content','price','outcomes','duration','description','classes','subjects','availability','teacher']
+        fields = ['title','description','classes','subjects','availability','teacher']
         read_only_fields = ['teacher']
 
 
@@ -37,7 +37,7 @@ class TuitionSerializer(serializers.ModelSerializer):
     teacher = serializers.SerializerMethodField(method_name='get_teacher_details')
     class Meta:
         model = Tuition
-        fields = ['id','title','sub_title','course_content','price','outcomes','duration','description','classes','subjects','availability','teacher']
+        fields = ['id','title','description','classes','subjects','availability','teacher']
 
     def get_teacher_details(self,obj):
         return obj.teacher.first_name

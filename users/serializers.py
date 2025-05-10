@@ -8,7 +8,7 @@ from teachers.serializers import ForProfileTuitionSerializer
 
 class CustomUserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
-        fields = ['first_name','last_name','password','email','address','phone_number','role','institute','profession','bio','qualifications','experience']
+        fields = ['first_name','last_name','password','email','address','phone_number','role']
 
 
 
@@ -18,7 +18,7 @@ class CustomUserSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ['id','first_name','last_name','email','address','phone_number','institute','profession','bio','qualifications','experience','applied_tuition','approved_tuition']
+        fields = ['id','first_name','last_name','email','address','phone_number','applied_tuition','approved_tuition']
 
     def check_applied_tuition(self, obj):
         applicants = Applicant.objects.select_related('tuition').filter(user=obj) 
