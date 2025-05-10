@@ -79,13 +79,14 @@ WSGI_APPLICATION = 'HomeTutor.wsgi.app'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('dbname'),
-        'USER': config('user'),
-        'PASSWORD': config('password'),
-        'HOST': config('host'),
-        'PORT': config('port')
+        'NAME': 'postgres',
+        'USER': 'postgres.xfhlprdymmaepybzsysp',
+        'PASSWORD': 'Mtn4qYykkw3sugIm',
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+        'PORT': 5432,
     }
 }
+
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -139,9 +140,10 @@ INTERNAL_IPS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173/',
-    'http://localhost:5173/'
+    'http://localhost:5173',
+    
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
