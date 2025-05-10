@@ -12,12 +12,17 @@ class Tuition(models.Model):
     ]
 
     title = models.CharField(max_length=150, blank=False, null=False)
+    sub_title = models.CharField(max_length=150, blank=False, null=False)
     description = models.TextField()
+    course_content = models.TextField()
     classes = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    duration = models.CharField(max_length=100, blank=True, null=True)
     subjects = models.CharField(max_length= 150)
     availability = models.CharField(max_length= 5, choices=STATUS_CHOICES, default= Yes)
     Enrolled = models.PositiveIntegerField(default=0)
     teacher = models.ForeignKey(User, on_delete= models.CASCADE, related_name= 'tuition')
+    fee = models.PositiveBigIntegerField(default= 499, blank=False, null=False)
+    outcomes = models.TextField()
 
     def __str__(self):
         return self.title
